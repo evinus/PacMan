@@ -8,15 +8,15 @@ public enum Tile
     Deadtop,
     TurnTopLeft,
     DeadRight,
-    WalkLeftRight,
+    WallTopBottom,
     TurnTopRight,
-    WalkLeftRightTop,
+    WallBottom,
     DeadBottom,
     TurnRightBottom,
-    WalkTopBottom,
-    WalkTopRightBottom,
+    WallRightLeft,
+    WallLeft,
     TurnLeftBottom,
-    WalkLeftRightBottom,
-    WalkTopLeftBottom,
-    WalkAll
+    WallTop,
+    WallRight,
+    NoWall
 };

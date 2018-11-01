@@ -11,10 +11,14 @@ namespace PacMan
 {
     class LevelManager : IGame
     {
-        Map map = new Map(3, 1);
+        Map map; 
 
 
-
+        public LevelManager()
+        {
+            map = new Map(3, 1);
+            SaveMapFile();
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {

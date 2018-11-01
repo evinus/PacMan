@@ -11,10 +11,11 @@ namespace PacMan
 {
     public abstract class GameObject : IGame
     {
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
-        }
+
+        protected Texture2D texMain;
+
+        public abstract void Draw(SpriteBatch spriteBatch);
+        
 
         public void Update(GameTime gameTime)
         {

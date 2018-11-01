@@ -17,8 +17,8 @@ namespace PacMan
 
         public Map(int width,int height)
         {
-            width = 3;
-            height = 1;
+            width = 5;
+            height = 5;
 
             Tiles = new Tile[width, height];
             CreateMap();
@@ -27,9 +27,36 @@ namespace PacMan
 
         private void CreateMap()
         {
-            Tiles[0, 0] = Tile.DeadLeft;
-            Tiles[1, 0] = Tile.WalkLeftRight;
-            Tiles[2, 0] = Tile.DeadRight;
+            Tiles[0, 0] = Tile.TurnRightBottom;
+            Tiles[1, 0] = Tile.WallTopBottom;
+            Tiles[2, 0] = Tile.WallTopBottom;
+            Tiles[3, 0] = Tile.WallTopBottom;
+            Tiles[4, 0] = Tile.TurnLeftBottom;
+
+            Tiles[0, 1] = Tile.WallRightLeft;
+            Tiles[1, 1] = Tile.Empty;
+            Tiles[2, 1] = Tile.Empty;
+            Tiles[3, 1] = Tile.Empty;
+            Tiles[4, 1] = Tile.WallRightLeft;
+
+            Tiles[0, 2] = Tile.WallRightLeft;
+            Tiles[1, 2] = Tile.Empty;
+            Tiles[2, 2] = Tile.OnlyWalls;
+            Tiles[3, 2] = Tile.Empty;
+            Tiles[4, 2] = Tile.WallRightLeft;
+
+            Tiles[0, 3] = Tile.WallRightLeft;
+            Tiles[1, 3] = Tile.Empty;
+            Tiles[2, 3] = Tile.Empty;
+            Tiles[3, 3] = Tile.Empty;
+            Tiles[4, 3] = Tile.WallRightLeft;
+
+            Tiles[0, 4] = Tile.TurnTopLeft;
+            Tiles[1, 4] = Tile.WallTopBottom;
+            Tiles[2, 4] = Tile.WallTopBottom;
+            Tiles[3, 4] = Tile.WallTopBottom;
+            Tiles[4, 4] = Tile.TurnTopRight;
+
 
         }
         public Rectangle getTile(int tile)

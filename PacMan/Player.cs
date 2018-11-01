@@ -10,12 +10,7 @@ namespace PacMan
 {
     class Player : GameObject
     {
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(GameTime gameTime)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             throw new NotImplementedException();
         }
