@@ -8,60 +8,60 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PacMan
 {
-    class Map : IGame
+    public class Map : IGame
     {
 
-        public Tile[,] Tiles { get; set; }
+        public enumTile[,] Tiles { get; set; }
+        public Rectangle[,] TilePos { get; set; }
         
-        List<Rectangle> tilesPos  = new List<Rectangle>();
+        List<Rectangle> tilesSourcePos  = new List<Rectangle>();
 
         public Map(int width,int height)
         {
-            width = 5;
-            height = 5;
+            
 
-            Tiles = new Tile[width, height];
-            CreateMap();
+            Tiles = new enumTile[width, height];
+            //CreateMap();
             GetTexTiles();
         }
 
         private void CreateMap()
         {
-            Tiles[0, 0] = Tile.TurnRightBottom;
-            Tiles[1, 0] = Tile.WallTopBottom;
-            Tiles[2, 0] = Tile.WallTopBottom;
-            Tiles[3, 0] = Tile.WallTopBottom;
-            Tiles[4, 0] = Tile.TurnLeftBottom;
+            Tiles[0, 0] = enumTile.TurnRightBottom;
+            Tiles[1, 0] = enumTile.WallTopBottom;
+            Tiles[2, 0] = enumTile.WallTopBottom;
+            Tiles[3, 0] = enumTile.WallTopBottom;
+            Tiles[4, 0] = enumTile.TurnLeftBottom;
 
-            Tiles[0, 1] = Tile.WallRightLeft;
-            Tiles[1, 1] = Tile.Empty;
-            Tiles[2, 1] = Tile.Empty;
-            Tiles[3, 1] = Tile.Empty;
-            Tiles[4, 1] = Tile.WallRightLeft;
+            Tiles[0, 1] = enumTile.WallRightLeft;
+            Tiles[1, 1] = enumTile.Empty;
+            Tiles[2, 1] = enumTile.Empty;
+            Tiles[3, 1] = enumTile.Empty;
+            Tiles[4, 1] = enumTile.WallRightLeft;
 
-            Tiles[0, 2] = Tile.WallRightLeft;
-            Tiles[1, 2] = Tile.Empty;
-            Tiles[2, 2] = Tile.OnlyWalls;
-            Tiles[3, 2] = Tile.Empty;
-            Tiles[4, 2] = Tile.WallRightLeft;
+            Tiles[0, 2] = enumTile.WallRightLeft;
+            Tiles[1, 2] = enumTile.Empty;
+            Tiles[2, 2] = enumTile.OnlyWalls;
+            Tiles[3, 2] = enumTile.Empty;
+            Tiles[4, 2] = enumTile.WallRightLeft;
 
-            Tiles[0, 3] = Tile.WallRightLeft;
-            Tiles[1, 3] = Tile.Empty;
-            Tiles[2, 3] = Tile.Empty;
-            Tiles[3, 3] = Tile.Empty;
-            Tiles[4, 3] = Tile.WallRightLeft;
+            Tiles[0, 3] = enumTile.WallRightLeft;
+            Tiles[1, 3] = enumTile.Empty;
+            Tiles[2, 3] = enumTile.Empty;
+            Tiles[3, 3] = enumTile.Empty;
+            Tiles[4, 3] = enumTile.WallRightLeft;
 
-            Tiles[0, 4] = Tile.TurnTopLeft;
-            Tiles[1, 4] = Tile.WallTopBottom;
-            Tiles[2, 4] = Tile.WallTopBottom;
-            Tiles[3, 4] = Tile.WallTopBottom;
-            Tiles[4, 4] = Tile.TurnTopRight;
+            Tiles[0, 4] = enumTile.TurnTopLeft;
+            Tiles[1, 4] = enumTile.WallTopBottom;
+            Tiles[2, 4] = enumTile.WallTopBottom;
+            Tiles[3, 4] = enumTile.WallTopBottom;
+            Tiles[4, 4] = enumTile.TurnTopRight;
 
 
         }
         public Rectangle getTile(int tile)
         {
-            return tilesPos[tile];
+            return tilesSourcePos[tile];
         }
 
         private void GetTexTiles()
@@ -87,7 +87,7 @@ namespace PacMan
                     {
                         rectangle = new Rectangle((x * 32) + x, (y * 32) +y, 32, 32);
                     }
-                    tilesPos.Add(rectangle);
+                    tilesSourcePos.Add(rectangle);
                 }
             }
         }
@@ -114,6 +114,34 @@ namespace PacMan
         public void Update(GameTime gameTime)
         {
             throw new NotImplementedException();
+        }
+        public bool[] GetAllowedDirections(Rectangle pos)
+        {
+            int tileX1 = (int)Math.Floor(pos.X / 32d);
+            int tileY1 = (int)Math.Floor(pos.Y / 32d);
+            int tileX2 = (int)Math.Ceiling(pos.X / 32d);
+            int tileY2 = (int)Math.Ceiling(pos.Y / 32d);
+            int tileX3 = (int)Math.Ceiling((pos.X + 32) / 32d);
+            int tileY3 = (int)Math.Ceiling((pos.Y +32) / 32d);
+
+            bool[] answer = { false, false, false, false };
+            if (Tiles[tileX2, tileY2-1] == enumTile.Empty)
+            {
+                answer[0] = true;
+            }
+            if (Tiles[tileX1+1,tileY1] == enumTile.Empty)
+            {
+                answer[1] = true;
+            }
+            if (Tiles[tileX1, tileY1+1] == enumTile.Empty)
+            {
+                answer[2] = true;
+            }
+            if (Tiles[tileX2 -1, tileY3] == enumTile.Empty)
+            {
+                answer[3] = true;
+            }
+            return answer;
         }
     }
 }

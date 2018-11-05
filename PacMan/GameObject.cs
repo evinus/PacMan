@@ -13,13 +13,19 @@ namespace PacMan
     {
 
         protected Texture2D texMain;
+        public Rectangle Position;
+        protected Rectangle source;
+
+        public GameObject(Texture2D texMain, Rectangle pos)
+        {
+            this.texMain = texMain;
+            this.Position = pos;
+        }
 
         public abstract void Draw(SpriteBatch spriteBatch);
-        
 
-        public void Update(GameTime gameTime)
-        {
-            throw new NotImplementedException();
-        }
+
+        public abstract void Update(GameTime gameTime);
+        
     }
 }

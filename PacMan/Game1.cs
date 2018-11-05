@@ -13,10 +13,13 @@ namespace PacMan
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        GameManager gameManager = new GameManager();
+        GameManager gameManager;
 
         public static Texture2D TileSetSheet { get; private set; }
         public static Texture2D TileEmpty { get; private set; }
+        public static Texture2D PacManSheet { get; private set; }
+
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -44,6 +47,8 @@ namespace PacMan
 
             TileSetSheet = Content.Load<Texture2D>("Tileset");
             TileEmpty = Content.Load<Texture2D>("emptyTile");
+            PacManSheet = Content.Load<Texture2D>("pacman");
+            gameManager = new GameManager();
         }
 
         
@@ -56,8 +61,8 @@ namespace PacMan
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-           
-
+            gameManager.Update(gameTime);
+            KeyMouseReader.Update();
             base.Update(gameTime);
         }
 

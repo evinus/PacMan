@@ -9,25 +9,27 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PacMan
 {
-    class LevelManager : IGame
+    public class LevelManager : IGame
     {
-        Map map; 
+        public Map CurrentMap { get; private set; } 
 
 
         public LevelManager()
         {
-            map = new Map(3, 1);
-            SaveMapFile();
+            ReadMapFile();
+            
         }
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            map.Draw(spriteBatch);
-        }
+        
 
         public void Update(GameTime gameTime)
         {
             throw new NotImplementedException();
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            CurrentMap.Draw(spriteBatch);
         }
 
         private void SaveMapFile()
@@ -35,8 +37,8 @@ namespace PacMan
             using (FileStream filestream = new FileStream("TileMap", FileMode.OpenOrCreate, FileAccess.Write))
             {
                 BinaryWriter writer = new BinaryWriter(filestream);
-                int width = map.Tiles.GetLength(0);
-                int height = map.Tiles.GetLength(1);
+                int width = CurrentMap.Tiles.GetLength(0);
+                int height = CurrentMap.Tiles.GetLength(1);
                 writer.Write(width);
                 writer.Write(height);
 
@@ -44,7 +46,7 @@ namespace PacMan
                 {
                     for (int x = 0; x < width; x++)
                     {
-                        writer.Write((int)map.Tiles[x, y]);
+                        writer.Write((int)CurrentMap.Tiles[x, y]);
                     }
                 }
                 
@@ -54,7 +56,21 @@ namespace PacMan
 
         private void ReadMapFile()
         {
-            
+            using (FileStream filestream = new FileStream("TileMap", FileMode.OpenOrCreate, FileAccess.Read))
+            {
+                BinaryReader reader = new BinaryReader(filestream);
+                int width = reader.ReadInt32();
+                int height = reader.ReadInt32();
+                CurrentMap = new Map(width, height);
+
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                       CurrentMap.Tiles[x,y]= (enumTile)reader.ReadInt32();
+                    }
+                }
+            }
         }
     }
 }

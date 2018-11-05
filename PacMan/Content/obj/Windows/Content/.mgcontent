@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>F:/Users/Daniel/Dokument/GitHub/PacMan/PacMan/Content/centerDot.png</File>
+    <File>F:/Users/Daniel/Dokument/GitHub/PacMan/PacMan/Content/ghost.png</File>
+    <File>F:/Users/Daniel/Dokument/GitHub/PacMan/PacMan/Content/pacman.png</File>
+    <File>F:/Users/Daniel/Dokument/GitHub/PacMan/PacMan/Content/SpriteSheet.png</File>
+    <File>F:/Users/Daniel/Dokument/GitHub/PacMan/PacMan/Content/Tileset.png</File>
+    <File>F:/Users/Daniel/Dokument/GitHub/PacMan/PacMan/Content/emptyTile.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

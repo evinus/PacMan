@@ -1,6 +1,6 @@
 ﻿public enum Gamestate { Start, Game, End};
 
-public enum Tile
+public enum enumTile
 {
     Empty,
     OnlyWalls,
@@ -19,4 +19,13 @@ public enum Tile
     WallTop,
     WallRight,
     NoWall
+};
+
+public enum Direction
+{
+    Up,
+    Down,
+    Left,
+    Right,
+    Stop
 };

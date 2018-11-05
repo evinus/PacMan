@@ -27,6 +27,8 @@ namespace PacMan
             return mouseState.RightButton == ButtonState.Pressed &&
             oldMouseState.RightButton == ButtonState.Released;
         }
+  
+       
         //Should be called at beginning of Update in Game
         public static void Update()
         {

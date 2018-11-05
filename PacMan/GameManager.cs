@@ -12,17 +12,25 @@ namespace PacMan
 {
     public class GameManager : IGame
     {
+        public static Player Player { get; private set; }
+
+        public GameManager()
+        {
+            Player = new Player(Game1.PacManSheet, new Rectangle(96, 96, 32, 32));
+        }
 
         LevelManager levelManager = new LevelManager();
 
         public void Draw(SpriteBatch spriteBatch)
         {
             levelManager.Draw(spriteBatch);
+            Player.Draw(spriteBatch);
         }
 
         public void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            Player.Update(gameTime);
+            Player.AllowedDirections = levelManager.CurrentMap.GetAllowedDirections(Player.Position);
         }
 
         
