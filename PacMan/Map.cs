@@ -115,33 +115,6 @@ namespace PacMan
         {
             throw new NotImplementedException();
         }
-        public bool[] GetAllowedDirections(Rectangle pos)
-        {
-            int tileX1 = (int)Math.Floor(pos.X / 32d);
-            int tileY1 = (int)Math.Floor(pos.Y / 32d);
-            int tileX2 = (int)Math.Ceiling(pos.X / 32d);
-            int tileY2 = (int)Math.Ceiling(pos.Y / 32d);
-            int tileX3 = (int)Math.Ceiling((pos.X + 32) / 32d);
-            int tileY3 = (int)Math.Ceiling((pos.Y +32) / 32d);
-
-            bool[] answer = { false, false, false, false };
-            if (Tiles[tileX2, tileY2-1] == enumTile.Empty)
-            {
-                answer[0] = true;
-            }
-            if (Tiles[tileX1+1,tileY1] == enumTile.Empty)
-            {
-                answer[1] = true;
-            }
-            if (Tiles[tileX1, tileY1+1] == enumTile.Empty)
-            {
-                answer[2] = true;
-            }
-            if (Tiles[tileX2 -1, tileY3] == enumTile.Empty)
-            {
-                answer[3] = true;
-            }
-            return answer;
-        }
+        
     }
 }

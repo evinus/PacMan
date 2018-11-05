@@ -30,7 +30,7 @@ namespace PacMan
         public void Update(GameTime gameTime)
         {
             Player.Update(gameTime);
-            Player.AllowedDirections = levelManager.CurrentMap.GetAllowedDirections(Player.Position);
+            Player.allowedDirections = levelManager.CurrentMap.GetAllowedDirections(Player.position);
         }
 
         

@@ -20,7 +20,7 @@ namespace PacMan
         float speed = 150f;
         SpriteEffects spriteEffects = SpriteEffects.None;
         float rotation = 0;
-        public bool[] AllowedDirections { get; set; } = new bool[4];
+        bool[] allowedDirections = new bool[] { false, false, false, false };
 
         public Player(Texture2D texMain, Rectangle pos) : base(texMain,pos)
         {
@@ -30,7 +30,7 @@ namespace PacMan
         public override void Draw(SpriteBatch spriteBatch)
         {
             source = new Rectangle(currentFrame * texMain.Width / numberOfFrames, 0, texMain.Width / numberOfFrames, texMain.Height);
-            spriteBatch.Draw(texMain, Position, source ,Color.White,rotation,new Vector2(),spriteEffects,0);
+            spriteBatch.Draw(texMain, position, source ,Color.White,rotation,new Vector2(),spriteEffects,0);
 
         }
 
@@ -59,42 +59,82 @@ namespace PacMan
             
         }
 
+        public void GetAllowedDirections(enumTile[,] tiles)
+        {
+            //beronde på vilket håll man åker så ska man kolla på olika sätt
+            int tileX1 = (int)Math.Floor(position.X / 32d);
+            int tileY1 = (int)Math.Floor(position.Y / 32d);
+
+            int tileX2 = (int)Math.Ceiling(position.X / 32d);
+            int tileY2 = (int)Math.Ceiling(position.Y / 32d);
+
+            int tileX3 = (int)Math.Ceiling((position.X + 32) / 32d);
+            int tileY3 = (int)Math.Ceiling((position.Y + 32) / 32d);
+
+            for (int i = 0; i < allowedDirections.Length; i++)
+            {
+                allowedDirections[i] = false;
+            }
+
+
+            if (direction == Direction.Down)
+            {
+                if (tiles[tileX2, tileY2 - 1] == enumTile.Empty)
+                {
+                    allowedDirections[0] = true;
+                }
+                if (tiles[tileX1 + 1, tileY1] == enumTile.Empty)
+                {
+                    allowedDirections[1] = true;
+                }
+                if (tiles[tileX1, tileY1 + 1] == enumTile.Empty)
+                {
+                    allowedDirections[2] = true;
+                }
+                if (tiles[tileX2 - 1, tileY3] == enumTile.Empty)
+                {
+                    allowedDirections[3] = true;
+                } 
+            }
+            
+        }
+
         private void Move(GameTime gameTime)
         {
             switch(direction)
             {
                 case Direction.Down:
                     {
-                        if (AllowedDirections[2] == true)
+                        if (allowedDirections[2] == true)
                         {
-                            Position.Y += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            position.Y += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
                             spriteEffects = SpriteEffects.None; 
                         }
                         break;
                     }
                 case Direction.Up:
                     {
-                        if (AllowedDirections[0] == true)
+                        if (allowedDirections[0] == true)
                         {
-                            Position.Y -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            position.Y -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
                             spriteEffects = SpriteEffects.FlipVertically; 
                         }
                         break;
                     }
                 case Direction.Left:
                     {
-                        if (AllowedDirections[3] == true)
+                        if (allowedDirections[3] == true)
                         {
-                            Position.X -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            position.X -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
                             spriteEffects = SpriteEffects.FlipHorizontally; 
                         }
                         break;
                     }
                 case Direction.Right:
                     {
-                        if (AllowedDirections[1] == true)
+                        if (allowedDirections[1] == true)
                         {
-                            Position.X += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            position.X += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
                             spriteEffects = SpriteEffects.None; 
                         }
                         break;
