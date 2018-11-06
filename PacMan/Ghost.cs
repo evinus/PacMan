@@ -24,5 +24,11 @@ namespace PacMan
         {
             throw new NotImplementedException();
         }
+
+        virtual protected void Animate()
+        {
+
+        }
+
     }
 }

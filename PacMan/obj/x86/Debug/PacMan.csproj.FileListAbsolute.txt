@@ -62,3 +62,9 @@ F:\Users\Daniel\Dokument\GitHub\PacMan\PacMan\bin\Windows\x86\Debug\SharpDX.Dire
 F:\Users\Daniel\Dokument\GitHub\PacMan\PacMan\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 F:\Users\Daniel\Dokument\GitHub\PacMan\PacMan\bin\Windows\x86\Debug\SharpDX.XInput.xml
 F:\Users\Daniel\Dokument\GitHub\PacMan\PacMan\obj\x86\Debug\PacMan.csproj.CopyComplete
+C:\Users\Spellabb2018\source\repos\PacMan\PacMan\bin\Windows\x86\Debug\Content\Content\centerDot.xnb
+C:\Users\Spellabb2018\source\repos\PacMan\PacMan\bin\Windows\x86\Debug\Content\Content\emptyTile.xnb
+C:\Users\Spellabb2018\source\repos\PacMan\PacMan\bin\Windows\x86\Debug\Content\Content\ghost.xnb
+C:\Users\Spellabb2018\source\repos\PacMan\PacMan\bin\Windows\x86\Debug\Content\Content\pacman.xnb
+C:\Users\Spellabb2018\source\repos\PacMan\PacMan\bin\Windows\x86\Debug\Content\Content\SpriteSheet.xnb
+C:\Users\Spellabb2018\source\repos\PacMan\PacMan\bin\Windows\x86\Debug\Content\Content\Tileset.xnb

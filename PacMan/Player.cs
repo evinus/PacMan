@@ -21,6 +21,7 @@ namespace PacMan
         SpriteEffects spriteEffects = SpriteEffects.None;
         float rotation = 0;
         bool[] allowedDirections = new bool[] { false, false, false, false };
+        bool moving;
 
         public Player(Texture2D texMain, Rectangle pos) : base(texMain,pos)
         {
@@ -38,20 +39,20 @@ namespace PacMan
         {
             Animate(gameTime);
 
-            
-            if(KeyMouseReader.KeyPressed(Keys.Left))
+
+            if (KeyMouseReader.KeyPressed(Keys.Left) && allowedDirections[3])
             {
                 direction = Direction.Left;
             }
-            else if(KeyMouseReader.KeyPressed(Keys.Up))
+            else if(KeyMouseReader.KeyPressed(Keys.Up) && allowedDirections[0])
             {
                 direction = Direction.Up;
             }
-            else if(KeyMouseReader.KeyPressed(Keys.Right))
+            else if(KeyMouseReader.KeyPressed(Keys.Right)&& allowedDirections[1])
             {
                 direction = Direction.Right;
             }
-            else if(KeyMouseReader.KeyPressed(Keys.Down))
+            else if(KeyMouseReader.KeyPressed(Keys.Down)&& allowedDirections[2])
             {
                 direction = Direction.Down;
             }
@@ -61,41 +62,75 @@ namespace PacMan
 
         public void GetAllowedDirections(enumTile[,] tiles)
         {
+
+            int x = position.X % 32;
+            int y = position.Y % 32;
+
+            if (x == 0 && y == 0)
+            {
+                x = (int)(position.X / 32);
+                y = (int)(position.Y / 32);
+                moving = false;
+            }
+            else return;
+
             //beronde på vilket håll man åker så ska man kolla på olika sätt
-            int tileX1 = (int)Math.Floor(position.X / 32d);
-            int tileY1 = (int)Math.Floor(position.Y / 32d);
+            //int tileX1 = (int)Math.Floor(position.X / 32d);
+            //int tileY1 = (int)Math.Floor(position.Y / 32d);
 
-            int tileX2 = (int)Math.Ceiling(position.X / 32d);
-            int tileY2 = (int)Math.Ceiling(position.Y / 32d);
+            //int tileX2 = (int)Math.Ceiling(position.X / 32d);
+            //int tileY2 = (int)Math.Ceiling(position.Y / 32d);
 
-            int tileX3 = (int)Math.Ceiling((position.X + 32) / 32d);
-            int tileY3 = (int)Math.Ceiling((position.Y + 32) / 32d);
+            //int tileX3 = (int)Math.Ceiling((position.X + 32) / 32d);
+            //int tileY3 = (int)Math.Ceiling((position.Y + 32) / 32d);
 
             for (int i = 0; i < allowedDirections.Length; i++)
             {
                 allowedDirections[i] = false;
             }
 
-
-            if (direction == Direction.Down)
+            if(tiles[x,y-1] == enumTile.Empty)
             {
-                if (tiles[tileX2, tileY2 - 1] == enumTile.Empty)
-                {
-                    allowedDirections[0] = true;
-                }
-                if (tiles[tileX1 + 1, tileY1] == enumTile.Empty)
-                {
-                    allowedDirections[1] = true;
-                }
-                if (tiles[tileX1, tileY1 + 1] == enumTile.Empty)
-                {
-                    allowedDirections[2] = true;
-                }
-                if (tiles[tileX2 - 1, tileY3] == enumTile.Empty)
-                {
-                    allowedDirections[3] = true;
-                } 
+                allowedDirections[0] = true;
             }
+            if(tiles[x+1,y] == enumTile.Empty)
+            {
+                allowedDirections[1] = true;
+            }
+            if (tiles[x,y+1] == enumTile.Empty)
+            {
+                allowedDirections[2] = true;
+            }
+            if(tiles[x-1,y]== enumTile.Empty)
+            {
+                allowedDirections[3] = true;
+            }
+
+            ////0 upp,1höger,2 ner,3vänster
+            //if (direction == Direction.Down)
+            //{
+                
+            //    allowedDirections[0] = true;
+                
+            //    if (tiles[tileX1 + 1, tileY1] == enumTile.Empty)
+            //    {
+            //        allowedDirections[1] = true;
+            //    }
+
+            //    if (tiles[tileX1,tileY1 +1] == enumTile.Empty)
+            //    {
+            //        allowedDirections[2] = true; 
+            //    }
+  
+            //    if (tiles[tileX1 - 1, tileY1] == enumTile.Empty)
+            //    {
+            //        allowedDirections[3] = true;
+            //    } 
+            //}
+            //if(direction == Direction.Left)
+            //{
+            //    if()
+            //}
             
         }
 
@@ -107,8 +142,11 @@ namespace PacMan
                     {
                         if (allowedDirections[2] == true)
                         {
-                            position.Y += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
-                            spriteEffects = SpriteEffects.None; 
+                            position.Y += 2; //(int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            spriteEffects = SpriteEffects.None;
+                            allowedDirections[0] = false;
+                            allowedDirections[1] = false;
+                            allowedDirections[3] = false;
                         }
                         break;
                     }
@@ -116,8 +154,11 @@ namespace PacMan
                     {
                         if (allowedDirections[0] == true)
                         {
-                            position.Y -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
-                            spriteEffects = SpriteEffects.FlipVertically; 
+                            position.Y -= 2;//(int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            spriteEffects = SpriteEffects.FlipVertically;
+                            allowedDirections[2] = false;
+                            allowedDirections[1] = false;
+                            allowedDirections[3] = false;
                         }
                         break;
                     }
@@ -125,8 +166,11 @@ namespace PacMan
                     {
                         if (allowedDirections[3] == true)
                         {
-                            position.X -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
-                            spriteEffects = SpriteEffects.FlipHorizontally; 
+                            position.X -= 2; //(int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            spriteEffects = SpriteEffects.FlipHorizontally;
+                            allowedDirections[0] = false;
+                            allowedDirections[1] = false;
+                            allowedDirections[2] = false;
                         }
                         break;
                     }
@@ -134,8 +178,11 @@ namespace PacMan
                     {
                         if (allowedDirections[1] == true)
                         {
-                            position.X += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
-                            spriteEffects = SpriteEffects.None; 
+                            position.X += 2; //(int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            spriteEffects = SpriteEffects.None;
+                            allowedDirections[0] = false;
+                            allowedDirections[2] = false;
+                            allowedDirections[3] = false;
                         }
                         break;
                     }
