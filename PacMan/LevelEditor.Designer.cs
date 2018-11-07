@@ -30,9 +30,14 @@
         {
             this.dgvTiles = new System.Windows.Forms.DataGridView();
             this.btnOk = new System.Windows.Forms.Button();
+            this.btnAddColumn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTiles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,24 +45,56 @@
             // 
             this.dgvTiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
+            this.Column1});
             this.dgvTiles.Location = new System.Drawing.Point(12, 12);
+            this.dgvTiles.MultiSelect = false;
             this.dgvTiles.Name = "dgvTiles";
-            this.dgvTiles.Size = new System.Drawing.Size(709, 566);
+            this.dgvTiles.Size = new System.Drawing.Size(872, 614);
             this.dgvTiles.TabIndex = 0;
             // 
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(773, 555);
+            this.btnOk.Location = new System.Drawing.Point(978, 524);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 1;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // btnAddColumn
+            // 
+            this.btnAddColumn.Location = new System.Drawing.Point(929, 69);
+            this.btnAddColumn.Name = "btnAddColumn";
+            this.btnAddColumn.Size = new System.Drawing.Size(124, 23);
+            this.btnAddColumn.TabIndex = 2;
+            this.btnAddColumn.Text = "Add Column";
+            this.btnAddColumn.UseVisualStyleBackColor = true;
+            this.btnAddColumn.Click += new System.EventHandler(this.btnAddColumn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1018, 202);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(978, 391);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Column1
             // 
@@ -66,29 +103,42 @@
             this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // Column2
+            // btnOpen
             // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnOpen.Location = new System.Drawing.Point(978, 431);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(75, 23);
+            this.btnOpen.TabIndex = 5;
+            this.btnOpen.Text = "Open";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
-            // Column3
+            // btnRemove
             // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
+            this.btnRemove.Location = new System.Drawing.Point(929, 110);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(124, 23);
+            this.btnRemove.TabIndex = 6;
+            this.btnRemove.Text = "Remove Column";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // LevelEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 590);
+            this.ClientSize = new System.Drawing.Size(1074, 638);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnAddColumn);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.dgvTiles);
             this.Name = "LevelEditor";
             this.Text = "LevelEditor";
             ((System.ComponentModel.ISupportInitialize)(this.dgvTiles)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -96,8 +146,13 @@
 
         private System.Windows.Forms.DataGridView dgvTiles;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Button btnAddColumn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Column3;
+        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Button btnRemove;
     }
 }

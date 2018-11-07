@@ -34,7 +34,7 @@ namespace PacMan
 
         private void SaveMapFile()
         {
-            using (FileStream filestream = new FileStream("TileMap", FileMode.OpenOrCreate, FileAccess.Write))
+            using (FileStream filestream = new FileStream("TimeMap", FileMode.OpenOrCreate, FileAccess.Write))
             {
                 BinaryWriter writer = new BinaryWriter(filestream);
                 int width = CurrentMap.Tiles.GetLength(0);
@@ -56,7 +56,7 @@ namespace PacMan
 
         private void ReadMapFile()
         {
-            using (FileStream filestream = new FileStream("TileMap", FileMode.OpenOrCreate, FileAccess.Read))
+            using (FileStream filestream = new FileStream("mapvI", FileMode.OpenOrCreate, FileAccess.Read))
             {
                 BinaryReader reader = new BinaryReader(filestream);
                 int width = reader.ReadInt32();

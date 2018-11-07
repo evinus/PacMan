@@ -40,19 +40,19 @@ namespace PacMan
             Animate(gameTime);
 
 
-            if (KeyMouseReader.KeyPressed(Keys.Left) && allowedDirections[3])
+            if (KeyMouseReader.KeyPressed(Keys.Left))
             {
                 direction = Direction.Left;
             }
-            else if(KeyMouseReader.KeyPressed(Keys.Up) && allowedDirections[0])
+            else if(KeyMouseReader.KeyPressed(Keys.Up))
             {
                 direction = Direction.Up;
             }
-            else if(KeyMouseReader.KeyPressed(Keys.Right)&& allowedDirections[1])
+            else if(KeyMouseReader.KeyPressed(Keys.Right))
             {
                 direction = Direction.Right;
             }
-            else if(KeyMouseReader.KeyPressed(Keys.Down)&& allowedDirections[2])
+            else if(KeyMouseReader.KeyPressed(Keys.Down))
             {
                 direction = Direction.Down;
             }
@@ -68,8 +68,8 @@ namespace PacMan
 
             if (x == 0 && y == 0)
             {
-                x = (int)(position.X / 32);
-                y = (int)(position.Y / 32);
+                x = (position.X / 32);
+                y = (position.Y / 32);
                 moving = false;
             }
             else return;

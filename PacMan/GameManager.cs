@@ -16,7 +16,7 @@ namespace PacMan
 
         public GameManager()
         {
-            Player = new Player(Game1.PacManSheet, new Rectangle(96, 96, 32, 32));
+            Player = new Player(Game1.PacManSheet, new Rectangle(32, 32, 32, 32));
         }
 
         LevelManager levelManager = new LevelManager();

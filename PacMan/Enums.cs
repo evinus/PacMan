@@ -18,7 +18,12 @@ public enum enumTile
     TurnLeftBottom,
     WallTop,
     WallRight,
-    NoWall
+    NoWall,
+    Ghost1,
+    Ghost2,
+    Ghost3,
+    Ghost4,
+    Food
 };
 
 public enum Direction
