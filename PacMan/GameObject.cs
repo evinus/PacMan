@@ -14,6 +14,7 @@ namespace PacMan
 
         protected Texture2D texMain;
         public Rectangle position;
+        protected int offset = 16;
         protected Rectangle source;
 
         public GameObject(Texture2D texMain, Rectangle pos)

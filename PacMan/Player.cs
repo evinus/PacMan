@@ -12,7 +12,7 @@ namespace PacMan
     public class Player : GameObject
     {
         Texture2D texPacman;
-        private Direction direction;
+        private Direction direction, newDirection;
         float timeBetweenFrames = 0.1f;
         int currentFrame = 0;
         float timeSinceLastFrame;
@@ -25,7 +25,7 @@ namespace PacMan
 
         public Player(Texture2D texMain, Rectangle pos) : base(texMain,pos)
         {
-
+            
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -42,19 +42,19 @@ namespace PacMan
 
             if (KeyMouseReader.KeyPressed(Keys.Left))
             {
-                direction = Direction.Left;
+                newDirection = Direction.Left;
             }
             else if(KeyMouseReader.KeyPressed(Keys.Up))
             {
-                direction = Direction.Up;
+                newDirection = Direction.Up;
             }
             else if(KeyMouseReader.KeyPressed(Keys.Right))
             {
-                direction = Direction.Right;
+                newDirection = Direction.Right;
             }
             else if(KeyMouseReader.KeyPressed(Keys.Down))
             {
-                direction = Direction.Down;
+                newDirection = Direction.Down;
             }
             Move(gameTime);
             
@@ -70,6 +70,7 @@ namespace PacMan
             {
                 x = (position.X / 32);
                 y = (position.Y / 32);
+                direction = newDirection;
                 moving = false;
             }
             else return;

@@ -29,12 +29,12 @@ namespace PacMan
        
         protected override void Initialize()
         {
-            //using (LevelEditor form = new LevelEditor())
-            //{
+            using (LevelEditor form = new LevelEditor())
+            {
 
-            //    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) ;
+                if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) ;
 
-            //}
+            }
             IsMouseVisible = true;
                 base.Initialize();
         }
