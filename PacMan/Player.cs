@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PacMan
 {
-    public class Player : GameObject
+    public class Player : MovingObject
     {
         Texture2D texPacman;
         private Direction direction, newDirection;
@@ -31,7 +31,7 @@ namespace PacMan
         public override void Draw(SpriteBatch spriteBatch)
         {
             source = new Rectangle(currentFrame * texMain.Width / numberOfFrames, 0, texMain.Width / numberOfFrames, texMain.Height);
-            spriteBatch.Draw(texMain, position, source ,Color.White,rotation,new Vector2(),spriteEffects,0);
+            spriteBatch.Draw(texMain, drawPos, source ,Color.White,rotation,new Vector2(texMain.Width/2,texMain.Height/2),spriteEffects,0);
 
         }
 
@@ -39,7 +39,7 @@ namespace PacMan
         {
             Animate(gameTime);
 
-
+            base.Update(gameTime);
             if (KeyMouseReader.KeyPressed(Keys.Left))
             {
                 newDirection = Direction.Left;
@@ -107,31 +107,7 @@ namespace PacMan
                 allowedDirections[3] = true;
             }
 
-            ////0 upp,1höger,2 ner,3vänster
-            //if (direction == Direction.Down)
-            //{
-                
-            //    allowedDirections[0] = true;
-                
-            //    if (tiles[tileX1 + 1, tileY1] == enumTile.Empty)
-            //    {
-            //        allowedDirections[1] = true;
-            //    }
-
-            //    if (tiles[tileX1,tileY1 +1] == enumTile.Empty)
-            //    {
-            //        allowedDirections[2] = true; 
-            //    }
-  
-            //    if (tiles[tileX1 - 1, tileY1] == enumTile.Empty)
-            //    {
-            //        allowedDirections[3] = true;
-            //    } 
-            //}
-            //if(direction == Direction.Left)
-            //{
-            //    if()
-            //}
+           
             
         }
 
@@ -143,11 +119,11 @@ namespace PacMan
                     {
                         if (allowedDirections[2] == true)
                         {
-                            position.Y += 2; //(int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            position.Y += 2; 
                             spriteEffects = SpriteEffects.None;
-                            allowedDirections[0] = false;
-                            allowedDirections[1] = false;
-                            allowedDirections[3] = false;
+                            //allowedDirections[0] = false;
+                            //allowedDirections[1] = false;
+                            //allowedDirections[3] = false;
                         }
                         break;
                     }
@@ -155,11 +131,11 @@ namespace PacMan
                     {
                         if (allowedDirections[0] == true)
                         {
-                            position.Y -= 2;//(int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            position.Y -= 2;
                             spriteEffects = SpriteEffects.FlipVertically;
-                            allowedDirections[2] = false;
-                            allowedDirections[1] = false;
-                            allowedDirections[3] = false;
+                            //allowedDirections[2] = false;
+                            //allowedDirections[1] = false;
+                            //allowedDirections[3] = false;
                         }
                         break;
                     }
@@ -167,11 +143,11 @@ namespace PacMan
                     {
                         if (allowedDirections[3] == true)
                         {
-                            position.X -= 2; //(int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            position.X -= 2;
                             spriteEffects = SpriteEffects.FlipHorizontally;
-                            allowedDirections[0] = false;
-                            allowedDirections[1] = false;
-                            allowedDirections[2] = false;
+                            //allowedDirections[0] = false;
+                            //allowedDirections[1] = false;
+                            //allowedDirections[2] = false;
                         }
                         break;
                     }
@@ -179,11 +155,11 @@ namespace PacMan
                     {
                         if (allowedDirections[1] == true)
                         {
-                            position.X += 2; //(int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                            position.X += 2;
                             spriteEffects = SpriteEffects.None;
-                            allowedDirections[0] = false;
-                            allowedDirections[2] = false;
-                            allowedDirections[3] = false;
+                            //allowedDirections[0] = false;
+                            //allowedDirections[2] = false;
+                            //allowedDirections[3] = false;
                         }
                         break;
                     }
