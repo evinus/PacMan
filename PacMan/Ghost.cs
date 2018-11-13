@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PacMan
 {
-    class Ghost : GameObject
+    class Ghost : MovingObject
     {
         public Ghost(Texture2D texMain, Rectangle pos) : base(texMain, pos)
         {
@@ -17,12 +17,12 @@ namespace PacMan
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            base.Update(gameTime);
         }
 
         virtual protected void Animate()
@@ -30,5 +30,9 @@ namespace PacMan
 
         }
 
+        virtual protected void ChoosePath(Tile[,] tiles)
+        {
+
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace PacMan
         public static Texture2D TileSetSheet { get; private set; }
         public static Texture2D TileEmpty { get; private set; }
         public static Texture2D PacManSheet { get; private set; }
+        public static Texture2D SpriteSheet { get; private set; }
 
 
         public Game1()
@@ -29,13 +30,13 @@ namespace PacMan
        
         protected override void Initialize()
         {
-            using (LevelEditor form = new LevelEditor())
-            {
+            //using (LevelEditor form = new LevelEditor())
+            //{
 
-                if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) ;
+            //    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) ;
 
-            }
-            IsMouseVisible = true;
+            //}
+            //IsMouseVisible = true;
                 base.Initialize();
         }
 
@@ -48,7 +49,9 @@ namespace PacMan
             TileSetSheet = Content.Load<Texture2D>("Tileset");
             TileEmpty = Content.Load<Texture2D>("emptyTile");
             PacManSheet = Content.Load<Texture2D>("pacman");
+            SpriteSheet = Content.Load<Texture2D>("SpriteSheet");
             gameManager = new GameManager();
+            // 52 3 2 2
         }
 
         

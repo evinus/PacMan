@@ -16,6 +16,7 @@ namespace PacMan
 
         public LevelManager()
         {
+            
             ReadMapFile();
             
         }
@@ -46,7 +47,7 @@ namespace PacMan
                 {
                     for (int x = 0; x < width; x++)
                     {
-                        writer.Write((int)CurrentMap.Tiles[x, y]);
+                        writer.Write((int)CurrentMap.Tiles[x, y].Type);
                     }
                 }
                 
@@ -67,7 +68,10 @@ namespace PacMan
                 {
                     for (int x = 0; x < width; x++)
                     {
-                       CurrentMap.Tiles[x,y]= (enumTile)reader.ReadInt32();
+                        CurrentMap.Tiles[x, y] = new Tile
+                        {
+                            Type = (enumTile)reader.ReadInt32()
+                        };
                     }
                 }
             }

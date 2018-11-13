@@ -12,6 +12,11 @@ namespace PacMan
     public class MovingObject : GameObject
     {
         protected Rectangle drawPos;
+        protected float rotation = 0;
+
+        protected Direction direction, newDirection;
+        protected bool[] allowedDirections = new bool[] { false, false, false, false };
+
         public MovingObject(Texture2D texMain, Rectangle pos) : base(texMain, pos)
         {
             drawPos = new Rectangle(0, 0, pos.Width, pos.Height);
@@ -24,8 +29,8 @@ namespace PacMan
 
         public override void Update(GameTime gameTime)
         {
-            drawPos.X = position.X + (texMain.Width / 2);
-            drawPos.Y = position.Y + texMain.Height / 2;
+            drawPos.X = position.X +17 ;//(texMain.Width / 2);
+            drawPos.Y = position.Y +17;
         }
     }
 }

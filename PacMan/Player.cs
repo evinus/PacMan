@@ -12,16 +12,14 @@ namespace PacMan
     public class Player : MovingObject
     {
         Texture2D texPacman;
-        private Direction direction, newDirection;
+       
         float timeBetweenFrames = 0.1f;
         int currentFrame = 0;
         float timeSinceLastFrame;
         int numberOfFrames = 4;
         float speed = 150f;
         SpriteEffects spriteEffects = SpriteEffects.None;
-        float rotation = 0;
-        bool[] allowedDirections = new bool[] { false, false, false, false };
-        bool moving;
+        
 
         public Player(Texture2D texMain, Rectangle pos) : base(texMain,pos)
         {
@@ -31,7 +29,7 @@ namespace PacMan
         public override void Draw(SpriteBatch spriteBatch)
         {
             source = new Rectangle(currentFrame * texMain.Width / numberOfFrames, 0, texMain.Width / numberOfFrames, texMain.Height);
-            spriteBatch.Draw(texMain, drawPos, source ,Color.White,rotation,new Vector2(texMain.Width/2,texMain.Height/2),spriteEffects,0);
+            spriteBatch.Draw(texMain, drawPos, source ,Color.White,rotation,new Vector2(20,20),spriteEffects,0);
 
         }
 
@@ -60,7 +58,7 @@ namespace PacMan
             
         }
 
-        public void GetAllowedDirections(enumTile[,] tiles)
+        public void GetAllowedDirections(Tile[,] tiles)
         {
 
             int x = position.X % 32;
@@ -71,38 +69,30 @@ namespace PacMan
                 x = (position.X / 32);
                 y = (position.Y / 32);
                 direction = newDirection;
-                moving = false;
+                CheckFood(x, y, tiles);
             }
             else return;
 
-            //beronde på vilket håll man åker så ska man kolla på olika sätt
-            //int tileX1 = (int)Math.Floor(position.X / 32d);
-            //int tileY1 = (int)Math.Floor(position.Y / 32d);
-
-            //int tileX2 = (int)Math.Ceiling(position.X / 32d);
-            //int tileY2 = (int)Math.Ceiling(position.Y / 32d);
-
-            //int tileX3 = (int)Math.Ceiling((position.X + 32) / 32d);
-            //int tileY3 = (int)Math.Ceiling((position.Y + 32) / 32d);
+            
 
             for (int i = 0; i < allowedDirections.Length; i++)
             {
                 allowedDirections[i] = false;
             }
 
-            if(tiles[x,y-1] == enumTile.Empty)
+            if(tiles[x,y-1].Type == enumTile.Empty)
             {
                 allowedDirections[0] = true;
             }
-            if(tiles[x+1,y] == enumTile.Empty)
+            if(tiles[x+1,y].Type == enumTile.Empty)
             {
                 allowedDirections[1] = true;
             }
-            if (tiles[x,y+1] == enumTile.Empty)
+            if (tiles[x,y+1].Type == enumTile.Empty)
             {
                 allowedDirections[2] = true;
             }
-            if(tiles[x-1,y]== enumTile.Empty)
+            if(tiles[x-1,y].Type == enumTile.Empty)
             {
                 allowedDirections[3] = true;
             }
@@ -120,10 +110,8 @@ namespace PacMan
                         if (allowedDirections[2] == true)
                         {
                             position.Y += 2; 
+                            rotation = MathHelper.ToRadians(90);
                             spriteEffects = SpriteEffects.None;
-                            //allowedDirections[0] = false;
-                            //allowedDirections[1] = false;
-                            //allowedDirections[3] = false;
                         }
                         break;
                     }
@@ -132,10 +120,8 @@ namespace PacMan
                         if (allowedDirections[0] == true)
                         {
                             position.Y -= 2;
-                            spriteEffects = SpriteEffects.FlipVertically;
-                            //allowedDirections[2] = false;
-                            //allowedDirections[1] = false;
-                            //allowedDirections[3] = false;
+                            rotation = MathHelper.ToRadians(-90);
+                            spriteEffects = SpriteEffects.None;
                         }
                         break;
                     }
@@ -144,10 +130,8 @@ namespace PacMan
                         if (allowedDirections[3] == true)
                         {
                             position.X -= 2;
+                            rotation = MathHelper.ToRadians(0);
                             spriteEffects = SpriteEffects.FlipHorizontally;
-                            //allowedDirections[0] = false;
-                            //allowedDirections[1] = false;
-                            //allowedDirections[2] = false;
                         }
                         break;
                     }
@@ -156,13 +140,19 @@ namespace PacMan
                         if (allowedDirections[1] == true)
                         {
                             position.X += 2;
+                            rotation = MathHelper.ToRadians(0);
                             spriteEffects = SpriteEffects.None;
-                            //allowedDirections[0] = false;
-                            //allowedDirections[2] = false;
-                            //allowedDirections[3] = false;
                         }
                         break;
                     }
+            }
+        }
+
+        private void CheckFood(int x,int y, Tile[,] tiles)
+        {
+            if(tiles[x,y].Food == true)
+            {
+                tiles[x, y].Food = false;
             }
         }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Spellabb2018/source/repos/PacMan/PacMan/Content/SpriteSheet.png</SourceFile>
-  <SourceTime>2018-10-31T13:35:20.8881016+01:00</SourceTime>
+  <SourceTime>2018-11-13T10:47:57.6206911+01:00</SourceTime>
   <DestFile>C:/Users/Spellabb2018/source/repos/PacMan/PacMan/Content/bin/Windows/SpriteSheet.xnb</DestFile>
-  <DestTime>2018-11-01T09:55:16.3650235+01:00</DestTime>
+  <DestTime>2018-11-13T10:47:59.2086352+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

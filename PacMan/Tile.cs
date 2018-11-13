@@ -13,10 +13,12 @@ namespace PacMan
     {
         public Rectangle pos;
 
-        public enumTile type;
+        public enumTile Type { get; set; } = enumTile.Empty;
 
-        public bool Food { get; set; }
+        public bool Food { get; set; } = true;
         public bool SuperFood { get; set; }
+
+
 
     }
 }

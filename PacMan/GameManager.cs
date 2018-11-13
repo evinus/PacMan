@@ -13,13 +13,14 @@ namespace PacMan
     public class GameManager : IGame
     {
         public static Player Player { get; private set; }
+        LevelManager levelManager = new LevelManager();
 
         public GameManager()
         {
-            Player = new Player(Game1.PacManSheet, new Rectangle(64, 64, 32, 32));
+            Player = new Player(Game1.PacManSheet, new Rectangle(32, 32, 32, 32));
         }
 
-        LevelManager levelManager = new LevelManager();
+        
 
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -11,51 +11,52 @@ namespace PacMan
     public class Map : IGame
     {
 
-        public enumTile[,] Tiles { get; set; }
-        public Rectangle[,] TilePos { get; set; }
+        public Tile[,] Tiles { get; set; }
+        
         
         List<Rectangle> tilesSourcePos  = new List<Rectangle>();
-
+        Rectangle foodSource = new Rectangle(52, 3, 2, 2);
         public Map(int width,int height)
         {
             
 
-            Tiles = new enumTile[width, height];
+            Tiles = new Tile[width, height];
+            
             //CreateMap();
             GetTexTiles();
         }
 
         private void CreateMap()
         {
-            Tiles[0, 0] = enumTile.TurnRightBottom;
-            Tiles[1, 0] = enumTile.WallTopBottom;
-            Tiles[2, 0] = enumTile.WallTopBottom;
-            Tiles[3, 0] = enumTile.WallTopBottom;
-            Tiles[4, 0] = enumTile.TurnLeftBottom;
+            //Tiles[0, 0].Type = enumTile.TurnRightBottom;
+            //Tiles[1, 0] = enumTile.WallTopBottom;
+            //Tiles[2, 0] = enumTile.WallTopBottom;
+            //Tiles[3, 0] = enumTile.WallTopBottom;
+            //Tiles[4, 0] = enumTile.TurnLeftBottom;
 
-            Tiles[0, 1] = enumTile.WallRightLeft;
-            Tiles[1, 1] = enumTile.Empty;
-            Tiles[2, 1] = enumTile.Empty;
-            Tiles[3, 1] = enumTile.Empty;
-            Tiles[4, 1] = enumTile.WallRightLeft;
+            //Tiles[0, 1] = enumTile.WallRightLeft;
+            //Tiles[1, 1] = enumTile.Empty;
+            //Tiles[2, 1] = enumTile.Empty;
+            //Tiles[3, 1] = enumTile.Empty;
+            //Tiles[4, 1] = enumTile.WallRightLeft;
 
-            Tiles[0, 2] = enumTile.WallRightLeft;
-            Tiles[1, 2] = enumTile.Empty;
-            Tiles[2, 2] = enumTile.OnlyWalls;
-            Tiles[3, 2] = enumTile.Empty;
-            Tiles[4, 2] = enumTile.WallRightLeft;
+            //Tiles[0, 2] = enumTile.WallRightLeft;
+            //Tiles[1, 2] = enumTile.Empty;
+            //Tiles[2, 2] = enumTile.OnlyWalls;
+            //Tiles[3, 2] = enumTile.Empty;
+            //Tiles[4, 2] = enumTile.WallRightLeft;
 
-            Tiles[0, 3] = enumTile.WallRightLeft;
-            Tiles[1, 3] = enumTile.Empty;
-            Tiles[2, 3] = enumTile.Empty;
-            Tiles[3, 3] = enumTile.Empty;
-            Tiles[4, 3] = enumTile.WallRightLeft;
+            //Tiles[0, 3] = enumTile.WallRightLeft;
+            //Tiles[1, 3] = enumTile.Empty;
+            //Tiles[2, 3] = enumTile.Empty;
+            //Tiles[3, 3] = enumTile.Empty;
+            //Tiles[4, 3] = enumTile.WallRightLeft;
 
-            Tiles[0, 4] = enumTile.TurnTopLeft;
-            Tiles[1, 4] = enumTile.WallTopBottom;
-            Tiles[2, 4] = enumTile.WallTopBottom;
-            Tiles[3, 4] = enumTile.WallTopBottom;
-            Tiles[4, 4] = enumTile.TurnTopRight;
+            //Tiles[0, 4] = enumTile.TurnTopLeft;
+            //Tiles[1, 4] = enumTile.WallTopBottom;
+            //Tiles[2, 4] = enumTile.WallTopBottom;
+            //Tiles[3, 4] = enumTile.WallTopBottom;
+            //Tiles[4, 4] = enumTile.TurnTopRight;
 
 
         }
@@ -99,13 +100,17 @@ namespace PacMan
             {
                 for (int x = 0; x < Tiles.GetLength(0); x++)
                 {
-                    if (Tiles[x, y] == 0)
+                    if (Tiles[x, y].Type == 0)
                     {
                         spriteBatch.Draw(Game1.TileEmpty, new Vector2((x * 32), (y * 32)), Color.White);
+                        if(Tiles[x, y].Food == true)
+                        {
+                            spriteBatch.Draw(Game1.SpriteSheet, new Rectangle((x * 32) +16, (y * 32)+16,5,5), foodSource, Color.White);
+                        }
                     }
                     else
                     {
-                        spriteBatch.Draw(Game1.TileSetSheet, new Rectangle((x * 32), (y * 32), 32, 32), getTile((int)Tiles[x, y] -1), Color.White);
+                        spriteBatch.Draw(Game1.TileSetSheet, new Rectangle((x * 32), (y * 32), 32, 32), getTile((int)Tiles[x, y].Type -1), Color.White);
                     }
                 } 
             }
