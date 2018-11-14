@@ -12,13 +12,18 @@ namespace PacMan
     {
 
         public Tile[,] Tiles { get; set; }
-        
-        
+
+        public int Width { get; set; }
+        public int Height { get; set; }
+
+        public int numberFood { get; set; } = 0;
+
         List<Rectangle> tilesSourcePos  = new List<Rectangle>();
         Rectangle foodSource = new Rectangle(52, 3, 2, 2);
         public Map(int width,int height)
         {
-            
+            Width = width;
+            Height = height;
 
             Tiles = new Tile[width, height];
             
@@ -26,40 +31,7 @@ namespace PacMan
             GetTexTiles();
         }
 
-        private void CreateMap()
-        {
-            //Tiles[0, 0].Type = enumTile.TurnRightBottom;
-            //Tiles[1, 0] = enumTile.WallTopBottom;
-            //Tiles[2, 0] = enumTile.WallTopBottom;
-            //Tiles[3, 0] = enumTile.WallTopBottom;
-            //Tiles[4, 0] = enumTile.TurnLeftBottom;
-
-            //Tiles[0, 1] = enumTile.WallRightLeft;
-            //Tiles[1, 1] = enumTile.Empty;
-            //Tiles[2, 1] = enumTile.Empty;
-            //Tiles[3, 1] = enumTile.Empty;
-            //Tiles[4, 1] = enumTile.WallRightLeft;
-
-            //Tiles[0, 2] = enumTile.WallRightLeft;
-            //Tiles[1, 2] = enumTile.Empty;
-            //Tiles[2, 2] = enumTile.OnlyWalls;
-            //Tiles[3, 2] = enumTile.Empty;
-            //Tiles[4, 2] = enumTile.WallRightLeft;
-
-            //Tiles[0, 3] = enumTile.WallRightLeft;
-            //Tiles[1, 3] = enumTile.Empty;
-            //Tiles[2, 3] = enumTile.Empty;
-            //Tiles[3, 3] = enumTile.Empty;
-            //Tiles[4, 3] = enumTile.WallRightLeft;
-
-            //Tiles[0, 4] = enumTile.TurnTopLeft;
-            //Tiles[1, 4] = enumTile.WallTopBottom;
-            //Tiles[2, 4] = enumTile.WallTopBottom;
-            //Tiles[3, 4] = enumTile.WallTopBottom;
-            //Tiles[4, 4] = enumTile.TurnTopRight;
-
-
-        }
+      
         public Rectangle getTile(int tile)
         {
             return tilesSourcePos[tile];
@@ -108,7 +80,7 @@ namespace PacMan
                             spriteBatch.Draw(Game1.SpriteSheet, new Rectangle((x * 32) +16, (y * 32)+16,5,5), foodSource, Color.White);
                         }
                     }
-                    else
+                    else if(Tiles[x, y].Type >= (enumTile)1 && Tiles[x, y].Type <= (enumTile)17)
                     {
                         spriteBatch.Draw(Game1.TileSetSheet, new Rectangle((x * 32), (y * 32), 32, 32), getTile((int)Tiles[x, y].Type -1), Color.White);
                     }

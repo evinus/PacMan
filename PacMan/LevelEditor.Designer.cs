@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvTiles = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnAddColumn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTiles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,13 +50,21 @@
             this.dgvTiles.Location = new System.Drawing.Point(12, 12);
             this.dgvTiles.MultiSelect = false;
             this.dgvTiles.Name = "dgvTiles";
-            this.dgvTiles.Size = new System.Drawing.Size(872, 614);
+            this.dgvTiles.Size = new System.Drawing.Size(1481, 738);
             this.dgvTiles.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.MaxDropDownItems = 20;
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(978, 524);
+            this.btnOk.Location = new System.Drawing.Point(1597, 498);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 1;
@@ -66,7 +74,7 @@
             // 
             // btnAddColumn
             // 
-            this.btnAddColumn.Location = new System.Drawing.Point(929, 69);
+            this.btnAddColumn.Location = new System.Drawing.Point(1548, 89);
             this.btnAddColumn.Name = "btnAddColumn";
             this.btnAddColumn.Size = new System.Drawing.Size(124, 23);
             this.btnAddColumn.TabIndex = 2;
@@ -77,7 +85,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1018, 202);
+            this.label1.Location = new System.Drawing.Point(1637, 194);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 3;
@@ -85,7 +93,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(978, 391);
+            this.btnSave.Location = new System.Drawing.Point(1594, 371);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -99,7 +107,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(978, 431);
+            this.btnOpen.Location = new System.Drawing.Point(1594, 423);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 5;
@@ -109,7 +117,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(929, 110);
+            this.btnRemove.Location = new System.Drawing.Point(1548, 139);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(124, 23);
             this.btnRemove.TabIndex = 6;
@@ -120,24 +128,16 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(910, 260);
+            this.comboBox1.Location = new System.Drawing.Point(1548, 254);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 7;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.MaxDropDownItems = 20;
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // LevelEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 638);
+            this.ClientSize = new System.Drawing.Size(1684, 762);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnOpen);

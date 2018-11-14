@@ -8,11 +8,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PacMan
 {
-    class Ghost : MovingObject
+    public class Ghost : MovingObject
     {
-        public Ghost(Texture2D texMain, Rectangle pos) : base(texMain, pos)
-        {
 
+        public Ghost(Texture2D texMain, Rectangle pos, Tile[,] tiles) : base(texMain, pos,tiles)
+        {
+            timeBetweenFrames = 0.3f;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -25,14 +26,15 @@ namespace PacMan
             base.Update(gameTime);
         }
 
-        virtual protected void Animate()
+        protected override void Animate(GameTime gameTime)
         {
-
+            base.Animate(gameTime);
         }
 
-        virtual protected void ChoosePath(Tile[,] tiles)
+        protected virtual void ChoosePath()
         {
-
+            newDirection = (Direction)GameManager.Random.Next(0, 4);
+            Console.WriteLine(newDirection);
         }
     }
 }

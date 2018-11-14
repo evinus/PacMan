@@ -13,17 +13,15 @@ namespace PacMan
     {
         Texture2D texPacman;
        
-        float timeBetweenFrames = 0.1f;
-        int currentFrame = 0;
-        float timeSinceLastFrame;
-        int numberOfFrames = 4;
+        
+        
         float speed = 150f;
         SpriteEffects spriteEffects = SpriteEffects.None;
         
 
-        public Player(Texture2D texMain, Rectangle pos) : base(texMain,pos)
+        public Player(Texture2D texMain, Rectangle pos, Tile[,] tiles) : base(texMain,pos, tiles)
         {
-            
+            numberOfFrames = 4;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -36,7 +34,7 @@ namespace PacMan
         public override void Update(GameTime gameTime)
         {
             Animate(gameTime);
-
+            GetAllowedDirections();
             base.Update(gameTime);
             if (KeyMouseReader.KeyPressed(Keys.Left))
             {
@@ -58,7 +56,7 @@ namespace PacMan
             
         }
 
-        public void GetAllowedDirections(Tile[,] tiles)
+        private void GetAllowedDirections()
         {
 
             int x = position.X % 32;
@@ -156,18 +154,7 @@ namespace PacMan
             }
         }
 
-        private void Animate(GameTime gameTime)
-        {
-            timeSinceLastFrame += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if(timeSinceLastFrame >= timeBetweenFrames)
-            {
-                timeSinceLastFrame = 0;
-                currentFrame++;
-                if(currentFrame >= numberOfFrames)
-                {
-                    currentFrame = 0;
-                }
-            }
-        }
+        
+       
     }
 }

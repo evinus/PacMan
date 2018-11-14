@@ -11,7 +11,7 @@ namespace PacMan
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
+        public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GameManager gameManager;
 
@@ -30,12 +30,12 @@ namespace PacMan
        
         protected override void Initialize()
         {
-            using (LevelEditor form = new LevelEditor())
-            {
+            //using (LevelEditor form = new LevelEditor())
+            //{
 
-                if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) ;
+            //    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) ;
 
-            }
+            //}
             //IsMouseVisible = true;
             base.Initialize();
         }
@@ -52,6 +52,7 @@ namespace PacMan
             SpriteSheet = Content.Load<Texture2D>("SpriteSheet");
             gameManager = new GameManager();
             // 52 3 2 2
+            
         }
 
         
@@ -72,7 +73,7 @@ namespace PacMan
         
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.DarkBlue);
             
             spriteBatch.Begin();
             gameManager.Draw(spriteBatch);

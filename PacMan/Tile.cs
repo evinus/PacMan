@@ -15,7 +15,7 @@ namespace PacMan
 
         public enumTile Type { get; set; } = enumTile.Empty;
 
-        public bool Food { get; set; } = true;
+        public bool Food { get; set; }
         public bool SuperFood { get; set; }
 
 

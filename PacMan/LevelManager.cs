@@ -11,13 +11,14 @@ namespace PacMan
 {
     public class LevelManager : IGame
     {
-        public Map CurrentMap { get; private set; } 
-
+        public Map CurrentMap { get; set; }
+        
 
         public LevelManager()
         {
             
-            ReadMapFile();
+            
+
             
         }
 
@@ -55,26 +56,6 @@ namespace PacMan
             }
         }
 
-        private void ReadMapFile()
-        {
-            using (FileStream filestream = new FileStream("mapvI", FileMode.OpenOrCreate, FileAccess.Read))
-            {
-                BinaryReader reader = new BinaryReader(filestream);
-                int width = reader.ReadInt32();
-                int height = reader.ReadInt32();
-                CurrentMap = new Map(width, height);
-
-                for (int y = 0; y < height; y++)
-                {
-                    for (int x = 0; x < width; x++)
-                    {
-                        CurrentMap.Tiles[x, y] = new Tile
-                        {
-                            Type = (enumTile)reader.ReadInt32()
-                        };
-                    }
-                }
-            }
-        }
+        
     }
 }

@@ -1,4 +1,4 @@
-﻿public enum Gamestate { Start, Game, End};
+﻿public enum Gamestate { Start, Game, Paus, End};
 
 public enum enumTile
 {
@@ -31,8 +31,8 @@ public enum enumTile
 public enum Direction
 {
     Up,
+    Right,
     Down,
     Left,
-    Right,
     Stop
 };

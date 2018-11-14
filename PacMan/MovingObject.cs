@@ -13,13 +13,19 @@ namespace PacMan
     {
         protected Rectangle drawPos;
         protected float rotation = 0;
+        protected int currentFrame = 0;
+        protected float timeSinceLastFrame;
+        protected int numberOfFrames;
+        protected float timeBetweenFrames = 0.1f;
+        protected Tile[,] tiles;
 
         protected Direction direction, newDirection;
         protected bool[] allowedDirections = new bool[] { false, false, false, false };
 
-        public MovingObject(Texture2D texMain, Rectangle pos) : base(texMain, pos)
+        public MovingObject(Texture2D texMain, Rectangle pos, Tile[,] tiles) : base(texMain, pos)
         {
             drawPos = new Rectangle(0, 0, pos.Width, pos.Height);
+            this.tiles = tiles;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -31,6 +37,19 @@ namespace PacMan
         {
             drawPos.X = position.X +17 ;//(texMain.Width / 2);
             drawPos.Y = position.Y +17;
+        }
+        protected virtual void Animate(GameTime gameTime)
+        {
+            timeSinceLastFrame += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (timeSinceLastFrame >= timeBetweenFrames)
+            {
+                timeSinceLastFrame = 0;
+                currentFrame++;
+                if (currentFrame >= numberOfFrames)
+                {
+                    currentFrame = 0;
+                }
+            }
         }
     }
 }
