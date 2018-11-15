@@ -68,3 +68,4 @@ C:\Users\Spellabb2018\source\repos\PacMan\PacMan\bin\Windows\x86\Debug\Content\C
 C:\Users\Spellabb2018\source\repos\PacMan\PacMan\bin\Windows\x86\Debug\Content\Content\pacman.xnb
 C:\Users\Spellabb2018\source\repos\PacMan\PacMan\bin\Windows\x86\Debug\Content\Content\SpriteSheet.xnb
 C:\Users\Spellabb2018\source\repos\PacMan\PacMan\bin\Windows\x86\Debug\Content\Content\Tileset.xnb
+C:\Users\Spellabb2018\source\repos\PacMan\PacMan\bin\Windows\x86\Debug\Content\font.xnb

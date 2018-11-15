@@ -10,10 +10,11 @@ namespace PacMan
 {
     public class Ghost : MovingObject
     {
-
+        public Vector2 startPosition { get; private set; }
         public Ghost(Texture2D texMain, Rectangle pos, Tile[,] tiles) : base(texMain, pos,tiles)
         {
             timeBetweenFrames = 0.3f;
+            startPosition = new Vector2(pos.X, pos.Y);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

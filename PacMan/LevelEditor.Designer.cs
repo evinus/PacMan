@@ -32,13 +32,13 @@
             this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnAddColumn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tbxMapSelect = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTiles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(1597, 498);
+            this.btnOk.Location = new System.Drawing.Point(1594, 304);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 1;
@@ -81,15 +81,6 @@
             this.btnAddColumn.Text = "Add Column";
             this.btnAddColumn.UseVisualStyleBackColor = true;
             this.btnAddColumn.Click += new System.EventHandler(this.btnAddColumn_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1637, 194);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
             // 
             // btnSave
             // 
@@ -125,24 +116,34 @@
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // comboBox1
+            // tbxMapSelect
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1548, 254);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 7;
+            this.tbxMapSelect.Location = new System.Drawing.Point(1569, 267);
+            this.tbxMapSelect.Name = "tbxMapSelect";
+            this.tbxMapSelect.Size = new System.Drawing.Size(100, 20);
+            this.tbxMapSelect.TabIndex = 7;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1510, 194);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(159, 67);
+            this.textBox1.TabIndex = 8;
+            this.textBox1.Text = "Choose a map by typing its name down below. Existing maps are named mapv(number)." +
+    " Exampel mapv3.";
             // 
             // LevelEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1684, 762);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbxMapSelect);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAddColumn);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.dgvTiles);
@@ -159,13 +160,13 @@
         private System.Windows.Forms.DataGridView dgvTiles;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnAddColumn;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
+        private System.Windows.Forms.TextBox tbxMapSelect;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

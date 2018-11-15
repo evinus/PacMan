@@ -14,7 +14,7 @@ namespace PacMan
     public partial class LevelEditor : Form
     {
         public Map Map { get; private set; }
-
+        public string SelectedMap { get; set; }
 
         public LevelEditor()
         {
@@ -27,14 +27,14 @@ namespace PacMan
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            
+            SelectedMap = tbxMapSelect.Text;
         }
 
         private void btnAddColumn_Click(object sender, EventArgs e)
         {
             DataGridViewComboBoxColumn column = new DataGridViewComboBoxColumn();
             column.Items.AddRange(Enum.GetNames(typeof(enumTile)));
-            
+            column.MaxDropDownItems = 20;
             dgvTiles.Columns.Add(column);
         }
         private void Save()

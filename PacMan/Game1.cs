@@ -19,8 +19,8 @@ namespace PacMan
         public static Texture2D TileEmpty { get; private set; }
         public static Texture2D PacManSheet { get; private set; }
         public static Texture2D SpriteSheet { get; private set; }
-
-
+        public static SpriteFont Font { get; private set; }
+        string map;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -30,12 +30,16 @@ namespace PacMan
        
         protected override void Initialize()
         {
-            //using (LevelEditor form = new LevelEditor())
-            //{
+            using (LevelEditor form = new LevelEditor())
+            {
 
-            //    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) ;
+                if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    map = form.SelectedMap;
+                    
+                }
 
-            //}
+            }
             //IsMouseVisible = true;
             base.Initialize();
         }
@@ -50,9 +54,10 @@ namespace PacMan
             TileEmpty = Content.Load<Texture2D>("emptyTile");
             PacManSheet = Content.Load<Texture2D>("pacman");
             SpriteSheet = Content.Load<Texture2D>("SpriteSheet");
-            gameManager = new GameManager();
-            // 52 3 2 2
-            
+            Font = Content.Load<SpriteFont>("font");
+
+            gameManager = new GameManager(map);
+
         }
 
         
@@ -64,7 +69,20 @@ namespace PacMan
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            if (Keyboard.GetState().IsKeyDown(Keys.L))
+            {
+                using (LevelEditor form = new LevelEditor())
+                {
 
+                    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        map = form.SelectedMap;
+
+                    }
+
+                }
+                gameManager = new GameManager(map);
+            }
             gameManager.Update(gameTime);
             KeyMouseReader.Update();
             base.Update(gameTime);

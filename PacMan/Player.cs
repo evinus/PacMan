@@ -12,16 +12,17 @@ namespace PacMan
     public class Player : MovingObject
     {
         Texture2D texPacman;
-       
-        
+        GameManager gm;
+        public int NumberOfFoodEaten { get; set; }
         
         float speed = 150f;
         SpriteEffects spriteEffects = SpriteEffects.None;
         
 
-        public Player(Texture2D texMain, Rectangle pos, Tile[,] tiles) : base(texMain,pos, tiles)
+        public Player(Texture2D texMain, Rectangle pos, Tile[,] tiles, GameManager gm) : base(texMain,pos, tiles)
         {
             numberOfFrames = 4;
+            this.gm = gm;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -151,6 +152,8 @@ namespace PacMan
             if(tiles[x,y].Food == true)
             {
                 tiles[x, y].Food = false;
+                gm.GainScore(10);
+                NumberOfFoodEaten++;
             }
         }
 

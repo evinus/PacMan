@@ -48,6 +48,7 @@
     <Compile Include="Ghost.cs" />
     <Compile Include="Ghosts\Ghost1.cs" />
     <Compile Include="Ghosts\Ghost2.cs" />
+    <Compile Include="HUD.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="KeyMouseReader.cs" />
     <Compile Include="LevelEditor.cs">
